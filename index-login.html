@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles-login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+      crossorigin="anonymous"
+    />
+    <title>Spotify login page</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row logo">
+        <div class="col-12 d-flex justify-content-center mt-4 mb-3">
+          <img
+            src="/images/download.png"
+            style="width: 170px"
+            alt="spotify logo"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row mt-4">
+        <div class="col col-xs-12 col-sm-6 col-lg-4 m-auto">
+          <div class="d-flex flex-column">
+            <span class="span1 mx-auto text-center font-weight-bold"
+              >To continue, log in to Spotify.</span
+            >
+            <button
+              id="btn-facebook"
+              type="button"
+              class="btn btn-primary rounded-pill my-2 mx-auto py-3 w-100"
+              onclick="window.location.href='https://www.facebook.com/login.php?skip_api_login=1&api_key=174829003346&kid_directed_site=0&app_id=174829003346&signed_next=1&next=https%3A%2F%2Fwww.facebook.com%2Fv7.0%2Fdialog%2Foauth%3Fclient_id%3D174829003346%26state%3DAQDbYFTN5NS%252FQVr5GdjE1uJHFHlwK36N9uMqQOPOa5JohC%252F%252BTvEd1iuimEk5BjJt7Ga%252BcIeiMrWHH3QBw56P%252BQw8mJs2P%252F8%252FsAX7JyPLth88yQ6Ykbifgk%252Fcd1941GBFqIpgVOtp%252FWAeNVZR97txnNyn%252FtDFLpVa0qUe9vudbOQuVG0tGMGu0OeZ9lVxrSuu%252Fj6Wn1gLQBz%252FrRflQ2nh9GEF8YqYpfMs4NNdxuqMvLIQGMxE0Lcgy47MJ3HR0%252BpvTT2LUMa3loIKjcV5WXA82A%253D%253D%26redirect_uri%3Dhttps%253A%252F%252Faccounts.spotify.com%252Flogin%252Ffacebook%252Fredirect%26ret%3Dlogin%26fbapp_pres%3D0%26logger_id%3D98165913-afca-43fa-9529-2372b13571ab%26tp%3Dunspecified&cancel_url=https%3A%2F%2Faccounts.spotify.com%2Flogin%2Ffacebook%2Fredirect%3Ferror%3Daccess_denied%26error_code%3D200%26error_description%3DPermissions%2Berror%26error_reason%3Duser_denied%26state%3DAQDbYFTN5NS%252FQVr5GdjE1uJHFHlwK36N9uMqQOPOa5JohC%252F%252BTvEd1iuimEk5BjJt7Ga%252BcIeiMrWHH3QBw56P%252BQw8mJs2P%252F8%252FsAX7JyPLth88yQ6Ykbifgk%252Fcd1941GBFqIpgVOtp%252FWAeNVZR97txnNyn%252FtDFLpVa0qUe9vudbOQuVG0tGMGu0OeZ9lVxrSuu%252Fj6Wn1gLQBz%252FrRflQ2nh9GEF8YqYpfMs4NNdxuqMvLIQGMxE0Lcgy47MJ3HR0%252BpvTT2LUMa3loIKjcV5WXA82A%253D%253D%23_%3D_&display=page&locale=en_US&pl_dbl=0'"
+            >
+              <i class="fa fa-facebook mr-3"></i> CONTINUE WITH FACEBOOK
+            </button>
+            <button
+              id="btn-apple"
+              type="button"
+              class="btn btn-dark rounded-pill mx-auto py-3 w-100"
+              onclick="window.location.href='https://appleid.apple.com/auth/authorize?client_id=com.spotify.accounts&response_type=code&response_mode=form_post&scope=name%20email&state=AQDKDSTpMsV1hxIy8FLxLvPEhYOQqPJW0U24Kb4zRLls9DzhQi6r3zWfz4PVbLDwF02SNt6zLXlbNMu3ckUK0Ro9uB4AANT7LTjEh4PSREPANcFKriSmV5Mm%2Bl4tguBMirVd8w%2FiGLEISHIp3uWQXoDo9mdIYYQpmYJqvhIQLU4YZ40w77qTbv3U00DVQcGszmXeuzYIG4tP7L%2Bk4%2BGZYWMdjrlVMVnUSUgsBKcWFwFm4TfwvIAcFZ1kXvQXHl4a9lXI4IzGF7weOsuO3EySqQ%3D%3D&redirect_uri=https%3A%2F%2Faccounts.spotify.com%2Flogin%2Fapple%2Fredirect'"
+            >
+              <i class="fa fa-apple mr-3"></i> CONTINUE WITH APPLE
+            </button>
+          </div>
+
+          <div class="d-flex flex-column">
+            <div
+              class="w-100 my-3 d-flex justify-content-between align-items-center"
+            >
+              <div class="or-line"></div>
+              <span class="text-center font-weight-bold"> OR</span>
+              <div class="or-line"></div>
+            </div>
+
+            <input
+              id="input-email-username"
+              type="text"
+              class="mx-auto py-2 px-1 px-md-3 mb-2 w-100"
+              placeholder="Email address or username"
+            />
+            <span id="email-enter" class="d-block"></span>
+            <!-- <div class="input-icons"> -->
+            <!-- <i class="fa fa-lock icon"></i> -->
+            <input
+              id="input-password"
+              type="password"
+              class="px-0 px-md-3 mt-2 mb-4 py-2 mx-auto w-100"
+              placeholder="password"
+            />
+            <span id="password-enter" class="d-block"></span>
+          </div>
+          <!--  </div> -->
+
+          <div
+            class="row row-cols-xs-1 row-cols-md-2 d-flex no-gutters justify-content-between align-items-center"
+          >
+            <!-- <input id="checkbox" type="checkbox"class="bg-success " >
+                        <label for="checkbox" class="text-muted">Remember me</label> -->
+            <div class="col">
+              <label for="checkboxid" class="text-muted"
+                ><input
+                  id="checkboxid"
+                  type="checkbox"
+                  class="checkbox mr-2"
+                />Remember me</label
+              >
+            </div>
+            <div class="col">
+              <button
+                id="btn-login"
+                type="button"
+                class="btn btn-success rounded-pill py-2 w-100"
+                onclick="window.location.href='homepage.html'"
+              >
+                LOG IN
+              </button>
+            </div>
+          </div>
+          <div class="col-12 d-flex flex-column">
+            <a
+              href="https://www.spotify.com/us/password-reset/"
+              class="text-center text-muted my-3"
+              >forget your password?</a
+            >
+          </div>
+          <div
+            class="w-100 mb-2 d-flex justify-content-between align-items-center"
+          >
+            <div class="or-line-second"></div>
+            <!-- span class="text-center font-weight-bold"> OR</span>
+              <div class="or-line"></div> -->
+          </div>
+
+          <div class="col-12 d-flex px-0 flex-column">
+            <!-- <span><hr></span> -->
+            <span class="text-center font-weight-bold"
+              >Don't have an account?</span
+            ><br />
+            <button
+              id="sign-up"
+              type="button"
+              class="btn btn-light mb-2 rounded-pill mx-auto py-3 px-0 border-dark text-muted w-100"
+              onclick="window.location.href='https://www.spotify.com/us/signup/?forward_url=https%3A%2F%2Fwww.spotify.com%2Fapi%2Fgrowth%2Fl2l-redirect%3Flocale%3Dus'"
+            >
+              SIGN UP FOR SPOTIFY
+            </button>
+          </div>
+          <div class="d-flex flex-column mb-5">
+            <span class="text-center text-muted" style="font-size: 10px"
+              >If you click "Log in with Facebook" and are not a Specify user,
+              you will be registered and <br />
+              you agree to Spotify's <a href="#">Terms & Conditions</a> and
+              <a href="#">Privaciy Policy</a></span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    -->
+    <script>
+      function facebook() {
+        const inputEmail = document.getElementById("input-email-username");
+        const inputPassword = document.getElementById("input-password");
+        const spanEmail = document.getElementById("email-enter");
+        const spanPassword = document.getElementById("password-enter");
+        console.log(inputEmail + inputPassword);
+
+        /*  do { */
+        if ((inputEmail.value && inputPassword.value) == 0) {
+          spanEmail.innerHTML =
+            "Please enter your Spotify username or email address.";
+          spanPassword.innerHTML = "Please enter your password.";
+          inputEmail.style.borderColor = "red";
+          inputPassword.style.borderColor = "red";
+          elseif(inputEmail.value == 0);
+          {
+            spanEmail.innerHTML =
+              "Please enter your Spotify username or email address.";
+            inputEmail.style.borderColor = "red";
+          }
+          elseif(inputPassword.value == 0);
+          {
+            spanPassword.innerHTML = "Please enter your password.";
+            inputPassword.style.borderColor = "red";
+          }
+          /*  } while ((inputEmail || inputPassword) == 0); */
+        }
+      }
+    </script>
+  </body>
+</html>

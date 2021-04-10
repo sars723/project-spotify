@@ -1,0 +1,1418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
+<style>
+
+    body {
+      width: 100%;
+      background:  rgba(31,31,31,1) 36%;
+    }
+
+
+/*********************************SIDEBAR***************************************/
+	@font-face {
+  font-family: "Circular";
+  src: url(/assets/fonts/lineto-circular-pro-book.ttf);
+}
+
+* {
+  font-family: "Circular", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  background-color: rgb(24, 23, 23);
+  margin: 0;
+  padding: 0;
+  min-width: 300px;
+}
+
+.fa-ellipsis-h {
+  color: white;
+}
+
+h1 {
+  color: white;
+}
+
+p {
+  color: white;
+}
+
+.row.rest-container {
+  height: 90vh;
+}
+
+.footer-container {
+  height: 10vh;
+}
+
+.album-cover {
+  width: 100%;
+}
+
+.artistname,
+.albumtitle {
+  margin-bottom: 0;
+}
+
+.artistname {
+  font-size: 0.7rem;
+  color: gray;
+}
+
+/* .side-bar {
+  height: 100%;
+} */
+
+a {
+  color: white;
+}
+
+#griglia {
+  margin: 5px;
+}
+
+button.btn {
+  width: 8rem;
+}
+
+html {
+  font-size: 16px;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  color: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all ease 0.3s;
+}
+
+a:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.menu--item--logos:hover {
+  opacity: 0.8;
+}
+
+.navbar--link--toggle {
+  display: none;
+}
+
+.side-bar {
+  width: 200px;
+  height: 100vh;
+  background-color: #000;
+  padding: 15px 15px 15px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 7;
+}
+
+.menu {
+  display: initial;
+}
+
+.menu--item,
+.lower--nav--item {
+  color: grey;
+  font-size: 1.5rem;
+  display: flex;
+  position: relative;
+  /* Needed for the .active state to add the background */
+}
+
+.menu--item {
+  margin-top: 5px;
+}
+
+.menu--item--text {
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-left: 15px;
+}
+
+.album-container {
+  height: 87vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.album-container::-webkit-scrollbar {
+  display: none;
+}
+
+.footer-container {
+  position: sticky;
+  bottom: 0;
+  height: 10vh;
+  z-index: 7;
+}
+
+/**footerTag**/
+footer {
+  width: 100%;
+  height: 13vh;
+  border-top: 1px solid #000;
+  background-color: rgba(24, 24, 24, 1);
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer--left-col {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.footer--left-col--song {
+  display: flex;
+}
+
+.footer--left-col--song--img {
+  margin-right: 14px;
+  display: flex;
+  position: relative;
+}
+
+.footer--left-col--song--img img {
+  height: 54px;
+  width: 54px;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.footer--left-col--song--img--pull-up {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: #000;
+  width: 24px;
+  height: 24px;
+  opacity: 0.7;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: #b3b3b3;
+  transition: all ease 0.3s;
+}
+
+.footer--left-col--song--img:hover .footer--left-col--song--img--pull-up {
+  display: flex;
+}
+
+.footer--left-col--song--details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.footer--left-col--song--details--title {
+  font-size: 0.9rem;
+  color: #b3b3b3;
+  transition: all ease 0.3s;
+}
+
+.footer--left-col--song--details--artist {
+  font-size: 0.8rem;
+  color: #b3b3b3;
+  transition: all ease 0.3s;
+}
+
+.footer--left-col--song--details--title:hover,
+.footer--left-col--song--details--artist:hover {
+  color: #fff;
+}
+
+.footer--left-col--actions--favorite {
+  background: transparent;
+  color: #b3b3b3;
+  outline: 0;
+  border: 0;
+}
+
+.footer--left-col--actions--cast {
+  background: transparent;
+  color: #b3b3b3;
+  outline: 0;
+  border: 0;
+  transition: all ease 0.3s;
+}
+
+.footer--left-col--actions--favorite:hover,
+.footer--left-col--actions--cast:hover {
+  color: #fff;
+  cursor: pointer;
+}
+
+.footer--middle-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.footer--middle-col--controls {
+  background: transparent;
+  outline: 0;
+  color: #b3b3b3;
+  border: 0;
+  margin-right: 10px;
+  font-size: 1.2rem;
+  transition: all ease 0.3s;
+}
+
+svg:hover path {
+  fill: white;
+}
+
+svg path {
+  transition: all ease 0.3s;
+}
+
+.footer-middle-col--range--wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-middle-col--range--text {
+  font-size: 0.7rem;
+}
+
+.footer--middle-col--range--input {
+  width: 250px;
+  -webkit-appearance: none;
+  background-color: #b3b3b3;
+  border-radius: 2px;
+  margin-left: 4px;
+  margin-right: 4px;
+  transition: all ease 0.3s;
+}
+
+.footer--middle-col--range--input::-webkit-slider-runnable-track {
+  height: 4px;
+  color: blue;
+}
+
+.footer--middle-col--range--input::-webkit-slider-thumb {
+  width: 4px;
+  -webkit-appearance: none;
+  height: 4px;
+  cursor: pointer;
+  background: black;
+}
+
+.footer--middle-col--range--input:hover {
+  background-color: #fff;
+}
+
+.footer--middle-col--range--input:focus {
+  outline: none;
+}
+
+.footer--right-col {
+  display: flex;
+  background: transparent;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer--right-col--controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer--right-col-controls--icon {
+  background: transparent;
+  outline: 0;
+  border: 0;
+  color: #b3b3b3;
+  margin-right: 5px;
+  transition: all ease 0.3s;
+}
+
+.footer--right-col-controls--icon:hover {
+  color: #fff;
+}
+
+.footer--right-col--range--input {
+  overflow: hidden;
+  width: 40px;
+  -webkit-appearance: none;
+  background-color: #b3b3b3;
+  border-radius: 2px;
+  margin-left: 4px;
+  margin-right: 4px;
+  transition: all ease 0.3s;
+}
+
+.footer--right-col--range--input::-webkit-slider-runnable-track {
+  height: 4px;
+  color: blue;
+}
+
+.footer--right-col--range--input::-webkit-slider-thumb {
+  width: 4px;
+  -webkit-appearance: none;
+  height: 4px;
+  cursor: pointer;
+  background: black;
+}
+
+.footer--right-col--range--input:hover {
+  background-color: #fff;
+}
+
+.footer--right-col--range--input:focus {
+  outline: none;
+}
+
+.navbar--link--toggle {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .jumbotron {
+    margin-top: 4rem;
+  }
+  .side-bar {
+    width: 100%;
+    height: auto;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .logo {
+    margin-top: -5px;
+    margin-right: 20px;
+  }
+
+  .lower--nav {
+    display: none;
+  }
+
+  .upper-nav {
+    display: flex;
+  }
+
+  .menu {
+    display: flex;
+    margin-top: 5px;
+    margin-left: 15px;
+  }
+
+  .menu--item {
+    margin-right: 15px;
+  }
+
+  .menu--item--text {
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin-left: 5px;
+  }
+
+  footer {
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    font-size: 0.8rem;
+    display: block;
+  }
+
+  .footer--left-col,
+  .footer--right-col {
+    margin: 10px auto;
+  }
+
+  .footer-middle-col--range--wrapper {
+    display: none;
+  }
+
+  .footer--right-col {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .side-bar {
+    position: relative;
+  }
+
+  .album-container {
+    margin-bottom: 6.5rem;
+  }
+
+  .jumbotron {
+    margin-top: 1rem;
+  }
+
+  .navbar--link--toggle {
+    align-self: flex-end;
+    display: initial;
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+    top: 30px;
+  }
+
+  .menu {
+    margin-left: 15px;
+    display: none;
+  }
+
+  .lower--nav {
+    display: none;
+  }
+
+  .navbar--toggleShow {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-middle-col--range--wrapper {
+    display: none;
+  }
+
+  .footer--right-col {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 301px) {
+  .side-bar {
+    min-width: 280px;
+  }
+
+  footer {
+    min-width: 280px;
+    position: fixed;
+    bottom: 0;
+  }
+
+  .footer--middle-col--controls {
+    margin-right: 5px;
+  }
+
+  .footer--middle-col--range--input {
+    width: 80%;
+    -webkit-appearance: none;
+    background-color: #b3b3b3;
+    border-radius: 2px;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+
+  .footer--right-col,
+  .footer--left-col {
+    display: none;
+  }
+
+  .navbar--toggleShow {
+    display: block;
+  }
+
+  .footer-middle-col--range--wrapper {
+    display: none;
+  }
+
+  .footer--right-col {
+    display: none;
+  }
+}
+
+.active {
+  border-bottom: 1px solid white;
+  color: #fff;
+}
+
+.navbar--link--toggle--rotate {
+  transform: rotate(-180deg);
+  transition: all ease 0.5s;
+}
+/****************************END SIDEBAR****************************************************/
+
+
+nav#headest {
+      display: none;
+
+    }
+
+div#headerImage {
+background-image: url("./Queen\ background\ header.jpg");
+background-size:cover;
+position: absolute;
+top: -1rem;
+background-position:top,right;
+min-height: 102vh;
+padding: 0;
+}
+
+div#headerImage::after{
+    content:" ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 103vh;
+    opacity: .5;
+    background-color: black;
+}
+
+#queenTitle {
+    font-family: 'Dela Gothic One', cursive, arial; 
+color: whitesmoke;
+font-size: 4rem;
+position: relative;
+top: 9rem;
+right: 41%;
+transform: translate(44%, 25%);
+z-index: 1;
+animation: fadeIn ease 10s;
+}
+
+@keyframes fadeIn {
+0% {opacity:0;}
+100% {opacity:1;}
+}
+
+#monthlyListeners {
+display: flex;
+    position: relative;
+	justify-content: center;
+    text-align: center;
+    width: 72%;
+top: 13rem;
+right: 14%;
+transform: translate(44%, 25%);
+z-index: 1;
+font-variant:small-caps;
+color: lightgray;
+letter-spacing: 1px;
+}
+
+/**Buttons**/
+div#musicButtons {
+    display: flex;
+    position: relative;
+    justify-content: center;
+top: 10rem;
+left: -22rem;
+padding: 0;
+transform: translateX(27rem);
+z-index: 2;
+animation: fadeIn ease 10s;
+}
+
+div#musicButtons button#playButton:hover {
+  font-weight: bold;
+  background-color: rgb(43, 190, 43);
+}
+
+div#musicButtons button#followButton:hover {
+  color: black;
+  background-color: beige;
+}
+
+#playButton{
+  color: whitesmoke;
+background-color: rgb(73, 161, 73);
+padding: 1% 9%;
+}
+#followButton{
+  color: whitesmoke;
+    padding: 1% 8%;
+    background-color:transparent;
+    border: solid 3px whitesmoke;
+    margin-right: 1rem; 
+}
+/**
+#followButton::after{
+    content: " ";
+    position: absolute;
+    width: 10%;
+    height: 80%;
+    right: 0;
+    left: 47%;
+    top: 2%;
+    background-color: black;
+    opacity: .2;
+    border-radius: 20px;
+}
+**/
+
+#iconButton {
+color: whitesmoke;
+font-size: 2rem;
+padding-right: 3rem;
+padding-top: 0;
+}
+
+div#ellipsisContainer:hover i#iconButton {
+  font-size: 3rem;
+}
+
+div#miniMenu {
+    top: 46vh;
+    position: relative;
+    
+}
+ul#minMenu-group {
+    font-size: 21px;
+    font-variant: small-caps;
+    position: relative;
+list-style-type: none;
+display: flex;
+flex-direction: row;
+justify-content:center;
+z-index: 2;
+}
+div#miniMenu::after {
+content: " ";
+width: 100%;
+height:100%;
+top: 0;
+position: absolute;
+background-image: linear-gradient(45deg, transparent, black, transparent);
+opacity: .3;
+z-index: 1;
+}
+
+ul#minMenu-group li a:hover {
+    border-bottom: solid rgb(90, 211, 90) 2px;
+    padding: 1px;
+    
+    }
+
+
+
+main {
+min-height: 100vh;
+  /**background-image: linear-gradient(184deg, rgba(0,0,0,1) 10%, rgba(24,24,24,0.942818304026349) 84%, rgba(20,20,20,1) 45%);
+	**/
+}
+
+.albumList {border: 0; background-color: transparent;}
+
+div.albumList>a {
+min-height: 60vh;
+width: 82%;
+background-color: #00008b69;
+
+}
+
+div.albumList a>img:hover {
+  animation: moveToUp ease 5s; 
+
+}
+
+i.fa-heart {
+  visibility: hidden;
+display: flex;
+position: absolute;
+top: 56vh;
+left: 7vw;
+color: pink
+}
+
+i.fa-ellipsis-v {
+  visibility: hidden;
+display: flex;
+position: absolute;
+top: 56vh;
+left: 15vw;
+color: whitesmoke;
+}
+
+
+i.fa-play-circle {
+  visibility: hidden;
+display: flex;
+position: absolute;
+top: 56vh;
+left: 1vw;
+color: lightgreen;
+}
+
+
+h5.card-title {word-wrap: unset!important;}
+
+.albumList:hover h5.card-title {
+  color: lightblue;
+}
+
+.albumList:hover p.card-text {
+  color: snow!important;
+
+}
+
+@keyframes moveToUp {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {transform: translateY(-60px);}
+
+
+0% {filter: brightness(0.3);}
+100% {filter: brightness(1);}
+}
+
+div.albumList>a:hover i.fa-ellipsis-v {
+visibility: visible;
+}
+div.albumList>a:hover i.fa-heart {
+visibility: visible;
+}
+div.albumList>a:hover i.fa-play-circle {
+visibility: visible;
+}
+
+div.albumList>a:not(:hover) {
+  background-color: transparent;
+  animation: moveToDown ease 5s;
+}
+
+@keyframes moveToDown {
+  0% {transform:translateY(-60px);}
+  
+  100% {transform:translateY(0px);}
+}
+
+/**Media Queries**/
+
+/**
+@media screen and (min-width: 1255px) {
+  div#miniMenu {
+    top: 66vh;
+ }
+}
+**/
+@media screen and (min-width:768px){
+  div.albumList>a {
+    width: 150%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  div#miniMenu::after {
+    visibility: hidden;
+  }
+  
+  div p#monthlyListeners, div#musicButtons {
+  display: none;
+  }
+
+  div#headerImage {
+    min-height: 110vh;
+  }
+
+  div#headerImage::after {
+    min-height: 110vh;
+  }
+
+  nav#headest {
+  display: flex;
+  flex-direction: row;
+  /**justify-content: flex-end;**/
+}
+
+div#miniMenu{ top: 15rem;}
+
+
+main {padding-top: 22rem;}
+
+div.albumList>a img {
+  height: 290px!important;
+  width: 290px!important;
+}
+
+}
+
+@media screen and (max-width: 527px) {
+
+  div#headerImage {
+    min-height: 45rem;
+  }
+
+  div#headerImage::after {min-height: 45rem;}
+
+div#miniMenu {
+  text-align: end;
+}
+
+  ul#minMenu-group {
+    display: flex;
+    flex-direction: column;
+	width: 100%;
+	align-items: center;
+  }
+
+  ul#minMenu-group li#relatedArtists {
+width: 10rem;
+  }
+
+main {
+  padding-top: 30rem;
+}
+
+h3 {text-indent: 10rem;}
+}
+
+div.albumList>a img {
+  height: 190px;
+  width: 190px;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<header>
+<!--Picture-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!----------------------------------SIDEBAR-------------------------------------------->
+<nav class="side-bar col-12 col-md-3">
+        <div class="upper-nav navbar--toggleShow">
+            <div class="logo--and--toggle--wrapper">
+                <div id="logo-div" class="logo-div">
+                    <a href="#"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 1134 340" class="spotify-logo--text" width="130" height="70">
+                            <title>Spotify</title>
+                            <path fill="#FFFFFF"
+                                d="M8 171c0 92 76 168 168 168s168-76 168-168S268 4 176 4 8 79 8 171zm230 78c-39-24-89-30-147-17-14 2-16-18-4-20 64-15 118-8 162 19 11 7 0 24-11 18zm17-45c-45-28-114-36-167-20-17 5-23-21-7-25 61-18 136-9 188 23 14 9 0 31-14 22zM80 133c-17 6-28-23-9-30 59-18 159-15 221 22 17 9 1 37-17 27-54-32-144-35-195-19zm379 91c-17 0-33-6-47-20-1 0-1 1-1 1l-16 19c-1 1-1 2 0 3 18 16 40 24 64 24 34 0 55-19 55-47 0-24-15-37-50-46-29-7-34-12-34-22s10-16 23-16 25 5 39 15c0 0 1 1 2 1s1-1 1-1l14-20c1-1 1-1 0-2-16-13-35-20-56-20-31 0-53 19-53 46 0 29 20 38 52 46 28 6 32 12 32 22 0 11-10 17-25 17zm95-77v-13c0-1-1-2-2-2h-26c-1 0-2 1-2 2v147c0 1 1 2 2 2h26c1 0 2-1 2-2v-46c10 11 21 16 36 16 27 0 54-21 54-61s-27-60-54-60c-15 0-26 5-36 17zm30 78c-18 0-31-15-31-35s13-34 31-34 30 14 30 34-12 35-30 35zm68-34c0 34 27 60 62 60s62-27 62-61-26-60-61-60-63 27-63 61zm30-1c0-20 13-34 32-34s33 15 33 35-13 34-32 34-33-15-33-35zm140-58v-29c0-1 0-2-1-2h-26c-1 0-2 1-2 2v29h-13c-1 0-2 1-2 2v22c0 1 1 2 2 2h13v58c0 23 11 35 34 35 9 0 18-2 25-6 1 0 1-1 1-2v-21c0-1 0-2-1-2h-2c-5 3-11 4-16 4-8 0-12-4-12-12v-54h30c1 0 2-1 2-2v-22c0-1-1-2-2-2h-30zm129-3c0-11 4-15 13-15 5 0 10 0 15 2h1s1-1 1-2V93c0-1 0-2-1-2-5-2-12-3-22-3-24 0-36 14-36 39v5h-13c-1 0-2 1-2 2v22c0 1 1 2 2 2h13v89c0 1 1 2 2 2h26c1 0 1-1 1-2v-89h25l37 89c-4 9-8 11-14 11-5 0-10-1-15-4h-1l-1 1-9 19c0 1 0 3 1 3 9 5 17 7 27 7 19 0 30-9 39-33l45-116v-2c0-1-1-1-2-1h-27c-1 0-1 1-1 2l-28 78-30-78c0-1-1-2-2-2h-44v-3zm-83 3c-1 0-2 1-2 2v113c0 1 1 2 2 2h26c1 0 1-1 1-2V134c0-1 0-2-1-2h-26zm-6-33c0 10 9 19 19 19s18-9 18-19-8-18-18-18-19 8-19 18zm245 69c10 0 19-8 19-18s-9-18-19-18-18 8-18 18 8 18 18 18zm0-34c9 0 17 7 17 16s-8 16-17 16-16-7-16-16 7-16 16-16zm4 18c3-1 5-3 5-6 0-4-4-6-8-6h-8v19h4v-6h4l4 6h5zm-3-9c2 0 4 1 4 3s-2 3-4 3h-4v-6h4z">
+                            </path>
+                        </svg></a>
+                </div>
+                <div class="navbar--link--toggle"><i class="fas fa-bars"></i></div>
+            </div>
+	
+            <div class="menu">
+                <div class="menu--item">
+                    <div class="menu--item--logos">
+                        <a href="#">
+                            <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" width="24" height="24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M 256.274 60.84 L 84.324 166.237 L 84.324 443.063 L 193.27 443.063 L 193.27 293.73 L 320.228 293.73 L 320.228 443.063 L 428.222 443.063 L 428.222 165.476 L 256.274 60.84 Z M 256.274 35.95 L 448.452 149.145 L 448.452 464.395 L 300 464.395 L 300 315.062 L 213.499 315.062 L 213.499 464.395 L 64.095 464.395 L 64.095 150.161 L 256.274 35.95 Z"
+                                    fill="#B3B3B3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#"><span class="menu--item--text">Home</span></a>
+                    </div>
+                </div>
+                <div class="menu--item">
+                    <div class="menu--item--logos">
+                        <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" width="24" height="24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M349.714 347.937l93.714 109.969-16.254 13.969-93.969-109.969q-48.508 36.825-109.207 36.825-36.826 0-70.476-14.349t-57.905-38.603-38.603-57.905-14.349-70.476 14.349-70.476 38.603-57.905 57.905-38.603 70.476-14.349 70.476 14.349 57.905 38.603 38.603 57.905 14.349 70.476q0 37.841-14.73 71.619t-40.889 58.921zM224 377.397q43.428 0 80.254-21.461t58.286-58.286 21.461-80.254-21.461-80.254-58.286-58.285-80.254-21.46-80.254 21.46-58.285 58.285-21.46 80.254 21.46 80.254 58.285 58.286 80.254 21.461z"
+                                fill="#B3B3B3" fill-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <a href="#"><span class="menu--item--text">Search</span></a>
+                    </div>
+                </div>
+                <div class="menu--item">
+                    <div class="menu--item--logos">
+                        <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" width="24" height="24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M291.301 81.778l166.349 373.587-19.301 8.635-166.349-373.587zM64 463.746v-384h21.334v384h-21.334zM192 463.746v-384h21.334v384h-21.334z"
+                                fill="#B3B3B3"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <a href="#"><span class="menu--item--text">Library</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="lower--nav">
+            <div class="lower--nav--item">
+                <div>
+                    <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" role="img"
+                        height="24" width="24" viewBox="0 0 24 24" class="Svg-ulyrgf-0 hJgLcF">
+                        <path
+                            d="M11.5 0C5.149 0 0 5.148 0 11.5 0 17.851 5.149 23 11.5 23S23 17.851 23 11.5C23 5.148 17.851 0 11.5 0zm0 22C5.71 22 1 17.29 1 11.5S5.71 1 11.5 1 22 5.71 22 11.5 17.29 22 11.5 22zm.499-6.842V5h-1v10.149l-3.418-3.975-.758.652 4.678 5.44 4.694-5.439-.757-.653-3.439 3.984z"
+                            fill="#B3B3B3"></path>
+                    </svg>
+                </div>
+                <div>
+                    <a href="#"><span class="menu--item--text">Install App</span></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+<!------------------------------------------------------------------------------>
+<div class="container-fluid" id="headerImage" style="padding: 0;">
+    <div id="monthlyListenersTitle" style="text-align: center;">
+    <p id="monthlyListeners">33,000,575 monthly Listeners</p>
+    <p id="queenTitle">Queen</p>
+    <div id="musicButtons" class="container">
+        <div class="row mt-2" style="width: 80%; justify-content: center;">
+    <button id="playButton" class="text-light rounded-pill mr-2 mb-2">PLAY</button>
+    <button id="followButton" class="rounded-pill mr-2 mb-2">FOLLOW</button>
+    <!--Icon-->
+    <div id="ellipsisContainer">
+    <a href="#"><i id="iconButton" class="fas fa-ellipsis-h" id="iconButton"></i></a>
+</div>    
+</div></div>
+    </div>
+
+    <div id="miniMenu">
+            <ul id="minMenu-group">
+              <li class="active mx-3">
+                <a class="nav-link text-light" href="#">overview <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="mx-3">
+                <a class="nav-link text-light" id="relatedArtists" href="#">related artists</a>
+              </li>
+              <li class="nav-item mx-3">
+                <a class="nav-link text-light" href="#">about</a>
+              </li>
+            </ul>
+
+    </div>
+  </div>
+    </header>
+
+<!------------------------------------------------------------------------------>
+
+
+            
+<!-------------------------------END SIDEBAR------------------------------------------------>
+
+
+
+
+
+    
+    
+
+    <main>
+      <br>
+<br><h3 class="text-white" style="font-family: 'Dela Gothic One', cursive, arial; position: relative; text-indent: 15rem;">Albums</h3>
+<br>
+<!--        
+<div class="container">
+            <div class="row">
+              <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                <a href="#"><a href="#"><img src="./01.jpg" /></a></a>
+                <br>
+                <p>Text</p>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                <a href="#"><img src="./02.jpg" /></a>
+                <br>
+                <p>Text</p>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                <a href="#"><img src="./03.jpg" /></a>
+                <br>
+                <p>Text</p>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                <a href="#"><img src="./04.jpg" /></a>
+                <br>
+                <p>Text</p>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                <a href="#"><img src="./05.jpg" /></a>
+                <br>
+                <p>Text</p>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                <a href="#"><img src="./06.jpg" /></a>
+                <br>
+                <p>Text</p>
+              </div>
+
+            </div>
+            <br>
+          </div>-->
+
+          <!--------------------Albums Cards------------------------->
+
+          <!--<div class="container">
+            <div class="row">-->
+<br>
+<!--row 1-->
+<div class="row row-cols-1 row-cols-md-3 row-cols-lg-6 mx-sm-3 px-sm-5 mx-3">
+
+  <div class="col mb-4">
+    <div class="card albumList">
+      <a href="#"><img src="./01.jpg" class="card-img-top" alt="...">
+	  <i class="far fa-play-circle fa-lg"></i>
+	  <i class="fas fa-ellipsis-v fa-lg"></i>
+	  <i class="far fa-heart fa-lg"></i>
+	  </a>
+      <div class="card-body">
+        <h5 class="card-title">Bohemian Rhapsody (The Original Soundtrack)</h5>
+        <p class="card-text text-muted text-muted">Queen</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col mb-4">
+    <div class="card albumList">
+      <a href="#"><img src="./02.jpg" class="card-img-top" alt="...">
+        <i class="far fa-play-circle fa-lg"></i>
+        <i class="fas fa-ellipsis-v fa-lg"></i>
+        <i class="far fa-heart fa-lg"></i>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">On Air</h5>
+        <p class="card-text text-muted text-muted">Queen</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col mb-4">
+    <div class="card albumList">
+      <a href="#"><img src="./03.jpg" class="card-img-top" alt="...">
+        <i class="far fa-play-circle fa-lg"></i>
+        <i class="fas fa-ellipsis-v fa-lg"></i>
+        <i class="far fa-heart fa-lg"></i>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">A Night At The Odeon</h5>
+        <p class="card-text text-muted text-muted">Queen</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col mb-4">
+    <div class="card albumList">
+      <a href="#"><img src="./04.jpg" class="card-img-top" alt="...">
+        <i class="far fa-play-circle fa-lg"></i>
+        <i class="fas fa-ellipsis-v fa-lg"></i>
+        <i class="far fa-heart fa-lg"></i>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">Live At The Rainbow</h5>
+        <p class="card-text text-muted text-muted">Queen</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col mb-4">
+    <div class="card albumList">
+      <a href="#"><img src="./05.jpg" class="card-img-top" alt="...">
+        <i class="far fa-play-circle fa-lg"></i>
+        <i class="fas fa-ellipsis-v fa-lg"></i>
+        <i class="far fa-heart fa-lg"></i>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">Live At The Rainbow (Deluxe)</h5>
+        <p class="card-text text-muted text-muted">Queen</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col mb-4">
+    <div class="card albumList">
+      <a href="#"><img src="./06.jpg" class="card-img-top" alt="...">
+        <i class="far fa-play-circle fa-lg"></i>
+        <i class="fas fa-ellipsis-v fa-lg"></i>
+        <i class="far fa-heart fa-lg"></i>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">Hungarian Rhapsody (Live In Budapest/1986)</h5>
+        <p class="card-text text-muted text-muted">Queen</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!--END ROW 1-->
+
+<!------------------Row 2------------------------------------->
+<div class="row row-cols-1 row-cols-md-3 row-cols-lg-6 mx-sm-3 px-sm-5 mx-3">
+
+  <div class="col mb-4">
+    <div class="card albumList">
+      <a href="#"><img src="./07.jpg" class="card-img-top" alt="...">
+        <i class="far fa-play-circle fa-lg"></i>
+        <i class="fas fa-ellipsis-v fa-lg"></i>
+        <i class="far fa-heart fa-lg"></i>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">Bohemian Rhapsody (The Original Soundtrack)</h5>
+        <p class="card-text text-muted text-muted">Queen</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col mb-4">
+    <div class="card albumList">
+      <a href="#"><img src="./08.jpg" class="card-img-top" alt="...">
+        <i class="far fa-play-circle fa-lg"></i>
+        <i class="fas fa-ellipsis-v fa-lg"></i>
+        <i class="far fa-heart fa-lg"></i>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">Queen+Paul Rodgers</h5>
+        <p class="card-text text-muted text-muted">Queen</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col mb-4">
+    <div class="card albumList">
+      <a href="#"><img src="./09.jpg" class="card-img-top" alt="...">
+        <i class="far fa-play-circle fa-lg"></i>
+        <i class="fas fa-ellipsis-v fa-lg"></i>
+        <i class="far fa-heart fa-lg"></i>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">Return Of The Champions</h5>
+        <p class="card-text text-muted text-muted">Queen</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col mb-4">
+    <div class="card albumList">
+      <a href="#"><img src="./04.jpg" class="card-img-top" alt="...">
+        <i class="far fa-play-circle fa-lg"></i>
+        <i class="fas fa-ellipsis-v fa-lg"></i>
+        <i class="far fa-heart fa-lg"></i>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">Live At The Bowl</h5>
+        <p class="card-text text-muted text-muted">Queen</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col mb-4">
+    <div class="card albumList">
+      <a href="#"><img src="./05.jpg" class="card-img-top" alt="...">
+        <i class="far fa-play-circle fa-lg"></i>
+        <i class="fas fa-ellipsis-v fa-lg"></i>
+        <i class="far fa-heart fa-lg"></i>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">Best Of 1986</h5>
+        <p class="card-text text-muted text-muted">Queen</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col mb-4">
+    <div class="card albumList">
+      <a href="#"><img src="./06.jpg" class="card-img-top" alt="...">
+        <i class="far fa-play-circle fa-lg"></i>
+        <i class="fas fa-ellipsis-v fa-lg"></i>
+        <i class="far fa-heart fa-lg"></i>
+      </a>
+      <div class="card-body">
+        <h5 class="card-title">Best Of 1986 (Deluxe Edition)</h5>
+        <p class="card-text text-muted text-muted">Queen</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-------------------------------End Row 2--------------------->
+
+    <!-----------End ALBUMS--------------->
+<br><br><br><br><br>
+
+
+    <!---SIDEBAR FOOTER------------------------------------------------------------------>
+<div class="row footer-container">
+                <div class="col col-12 px-0">
+                    <footer>
+                        <div class="footer--left-col">
+                            <div class="footer--left-col--song">
+                                <div class="footer--left-col--song--img">
+                                    <div class="footer--left-col--song--img--pull-up">
+                                        <i class="fas fa-chevron-up"></i>
+                                    </div>
+                                    <img src="https://picsum.photos/156/156" alt="" />
+                                </div>
+                                <div class="footer--left-col--song--details">
+                                    <div class="footer--left-col--song--details--wrapper">
+                                        <a href="#" class="footer--left-col--song--details--title">Song For My Father</a>
+                                    </div>
+                                    <div class="footer-left-col--song--details--wrapper">
+                                        <a href="#" class="footer--left-col--song--details--artist">Artist</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="footer-left-col--actions">
+                                <button class="footer--left-col--actions--favorite">
+                                    <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        height="16" width="16" viewBox="0 0 16 16" class="Svg-ulyrgf-0 hJgLcF">
+                                        <path
+                                            d="M13.764 2.727a4.057 4.057 0 00-5.488-.253.558.558 0 01-.31.112.531.531 0 01-.311-.112 4.054 4.054 0 00-5.487.253A4.05 4.05 0 00.974 5.61c0 1.089.424 2.113 1.168 2.855l4.462 5.223a1.791 1.791 0 002.726 0l4.435-5.195A4.052 4.052 0 0014.96 5.61a4.057 4.057 0 00-1.196-2.883zm-.722 5.098L8.58 13.048c-.307.36-.921.36-1.228 0L2.864 7.797a3.072 3.072 0 01-.905-2.187c0-.826.321-1.603.905-2.187a3.091 3.091 0 012.191-.913 3.05 3.05 0 011.957.709c.041.036.408.351.954.351.531 0 .906-.31.94-.34a3.075 3.075 0 014.161.192 3.1 3.1 0 01-.025 4.403z"
+                                            fill="#FFFFFF"></path>
+                                    </svg>
+                                </button>
+                                <button class="footer--left-col--actions--cast">
+                                    <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g fill="#B3B3B3" fill-rule="evenodd">
+                                            <path
+                                                d="M1 3v9h14V3H1zm0-1h14a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"
+                                                fill-rule="nonzero" fill="#B3B3B3"></path>
+                                            <path d="M10 8h4v3h-4z" fill="#B3B3B3"></path>
+                                        </g>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+            
+                        <div class="footer--middle-col">
+                            <div class="footer--middle-col--controls">
+                                <button class="footer--middle-col--controls footer--middle-col--controls--shuffle">
+                                    <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        height="16" width="16" viewBox="0 0 16 16" class="Svg-ulyrgf-0 hJgLcF">
+                                        <path
+                                            d="M4.5 6.8l.7-.8C4.1 4.7 2.5 4 .9 4v1c1.3 0 2.6.6 3.5 1.6l.1.2zm7.5 4.7c-1.2 0-2.3-.5-3.2-1.3l-.6.8c1 1 2.4 1.5 3.8 1.5V14l3.5-2-3.5-2v1.5zm0-6V7l3.5-2L12 3v1.5c-1.6 0-3.2.7-4.2 2l-3.4 3.9c-.9 1-2.2 1.6-3.5 1.6v1c1.6 0 3.2-.7 4.2-2l3.4-3.9c.9-1 2.2-1.6 3.5-1.6z"
+                                            fill="#B3B3B3"></path>
+                                    </svg>
+                                </button>
+            
+                                <button class="footer--middle-col--controls footer--middle-col--controls--prev">
+                                    <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        height="16" width="16" viewBox="0 0 16 16" class="Svg-ulyrgf-0 hJgLcF">
+                                        <path d="M13 2.5L5 7.119V3H3v10h2V8.881l8 4.619z" fill="#B3B3B3"></path>
+                                    </svg>
+                                </button>
+            
+                                <button id="pauseBtn" style="display: none"
+                                    class="footer--middle-col--controls footer--middle-col--controls--play">
+                                    <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="16"
+                                        role="img" width="16" viewBox="0 0 24 24" aria-hidden="true">
+                                        <rect x="5" y="3" width="4" height="18" fill="#FFFFFF"></rect>
+                                        <rect x="15" y="3" width="4" height="18" fill="#FFFFFF"></rect>
+                                    </svg>
+                                </button>
+                                <button id="playBtn" class="footer--middle-col--controls footer--middle-col--controls--play">
+                                    <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="16"
+                                        role="img" width="16" viewBox="0 0 24 24" aria-hidden="true">
+                                        <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="#FFFFFF"></polygon>
+                                    </svg>
+                                </button>
+                                <button class="footer--middle-col--controls footer--middle-col--controls--next">
+                                    <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        height="16" width="16" viewBox="0 0 16 16" class="Svg-ulyrgf-0 hJgLcF">
+                                        <path d="M11 3v4.119L3 2.5v11l8-4.619V13h2V3z" fill="#B3B3B3"></path>
+                                    </svg>
+                                </button>
+                                <button class="footer--middle-col--controls footer--middle-col--controls--repeat">
+                                    <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" role="img"
+                                        height="16" width="16" viewBox="0 0 16 16" class="Svg-ulyrgf-0 hJgLcF">
+                                        <path
+                                            d="M5.5 5H10v1.5l3.5-2-3.5-2V4H5.5C3 4 1 6 1 8.5c0 .6.1 1.2.4 1.8l.9-.5C2.1 9.4 2 9 2 8.5 2 6.6 3.6 5 5.5 5zm9.1 1.7l-.9.5c.2.4.3.8.3 1.3 0 1.9-1.6 3.5-3.5 3.5H6v-1.5l-3.5 2 3.5 2V13h4.5C13 13 15 11 15 8.5c0-.6-.1-1.2-.4-1.8z"
+                                            fill="#B3B3B3"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="footer-middle-col--range--wrapper">
+                                <div><span class="footer-middle-col--range--text">0:00</span></div>
+                                <input type="range" class="footer--middle-col--range--input" />
+                                <div><span class="footer-middle-col--range--text">7:15</span></div>
+                            </div>
+                        </div>
+            
+                        <div class="footer--right-col">
+                            <div class="footer--right-col--controls">
+                                <button class="footer--right-col-controls--icon">
+                                    <i class="fas fa-sliders-h"></i>
+                                </button>
+                                <button class="footer--right-col-controls--icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </button>
+                                <button class="footer--right-col-controls--icon">
+                                    <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
+                                        role="presentation" height="16" width="16" aria-label="Volume high" id="volume-icon"
+                                        viewBox="0 0 16 16" class="Svg-ulyrgf-0 hJgLcF">
+                                        <path
+                                            d="M12.945 1.379l-.652.763c1.577 1.462 2.57 3.544 2.57 5.858s-.994 4.396-2.57 5.858l.651.763a8.966 8.966 0 00.001-13.242zm-2.272 2.66l-.651.763a4.484 4.484 0 01-.001 6.397l.651.763c1.04-1 1.691-2.404 1.691-3.961s-.65-2.962-1.69-3.962zM0 5v6h2.804L8 14V2L2.804 5H0zm7-1.268v8.536L3.072 10H1V6h2.072L7 3.732z"
+                                            fill="#B3B3B3"></path>
+                                    </svg>
+                                </button>
+                                <input type="range" class="footer--right-col--range--input" />
+                            </div>
+                        </div>
+                    </footer>
+<!------------------------------SIDEBAR FOOTER END-------------------------------------------->
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    </script>
+		
+</body>
+</html>
+
+
