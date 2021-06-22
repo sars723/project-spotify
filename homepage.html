@@ -119,11 +119,11 @@
              </section>
                 <div class="album-container">
 
-                    <div class="container container-fluid mb-3">
-                      <h2> #THROWBACKTHURSDAY</h2>
+                    <div id="parent-container"  class="container container-fluid mb-3">
+                      <!-- <h2> #THROWBACKTHURSDAY</h2>
 
-                        <div class="row d-flex flex-row">
-                            <div class="col-12 col-md-4 col-lg-2">
+                        <div class="row d-flex flex-row"> -->
+                           <!--  <div class="col-12 col-md-4 col-lg-2">
                               <div class="card">
                                 <img src="./assets/spotify1.png" class="card-img-top" alt="...">
                                 <div class="card-body">
@@ -175,8 +175,8 @@
                                 <h5 class="card-title">Italian Karaoke</h5>
                               </div>
                             </div>
-                          </div>
-                        </div>   
+                          </div> -->
+                       <!--  </div>  -->  
 
                     <h2>Classifiche</h2>
 
@@ -360,7 +360,64 @@
 
     <!-- Optional JavaScript; choose one of the two! -->
 
-    <script>
+    <script> 
+    let parentContainer=document.getElementById("parent-container")
+    parentContainer.innerHTML=""
+   /*  let fecthedAlbum=[] */
+    const queries=["eminem","metallica","behemoth"]
+    const fetchAlbum=(album,query)=>
+    {
+     /*  queries.forEach(query=>{ */
+          let h2=document.createElement("h2")
+        h2.innerText=query
+        let rowDiv=document.createElement("div")
+        rowDiv.classList.add("row", "d-flex", "flex-row")
+     
+      album.forEach(album=>{
+      
+rowDiv.innerHTML+=` 
+                            <div class="col-12 col-md-4 col-lg-2">
+                              <div class="card">
+                                <img src="${album.album.cover_big}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">${album.album.title}</h5>
+                                </div>
+                              </div>
+                            </div>
+                            `
+  })
+  parentContainer.appendChild(h2)
+  parentContainer.appendChild(rowDiv)
+/*  }) */
+    }
+      window.onload=()=>{
+        
+        queries.forEach(query=>{
+            fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q="+query, {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "b87c9d36dfmshbdaaa406e5e01c5p1cb598jsn7ba2f852ed1d",
+		"x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
+	}
+})
+.then(response => {
+	console.log(response);
+  return response.json()
+})
+.then(fetchedData => {
+	console.log(fetchedData.data);
+/*   fecthedAlbum=data.data */
+  fetchAlbum(fetchedData.data,query)
+ 
+
+})
+.catch(err => {
+	console.error(err);
+});
+        })
+      
+      }
+
         function classToggle() {
             const navItems = document.querySelectorAll(".menu");
 
