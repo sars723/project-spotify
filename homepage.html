@@ -109,9 +109,11 @@
                     <a class="nav-link " href="#">NEW RELEASES</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " href="#">DISCOVER</a>
+                    <a class="nav-link " >DISCOVER</a>
                   </li>
                 </ul>
+                <button onclick="fetchAlbumOnClick()">ListAlbum</button>
+                <button onclick="displayUniqueAlbums()">Display Unique Albums</button>
               </div>
         
             </div>
@@ -363,7 +365,8 @@
     <script> 
     let parentContainer=document.getElementById("parent-container")
     parentContainer.innerHTML=""
-   /*  let fecthedAlbum=[] */
+    let fecthedAlbum=[]
+    let uniqueId=[]
     const queries=["eminem","metallica","behemoth"]
     const fetchAlbum=(album,query)=>
     {
@@ -390,10 +393,89 @@ rowDiv.innerHTML+=`
   parentContainer.appendChild(rowDiv)
 /*  }) */
     }
+    const fetchAlbumOnClick=()=>{
+      console.log(fecthedAlbum)
+      parentContainer.innerHTML=""
+      let h2=document.createElement("h2")
+        h2.innerText="All Albums"
+        let rowDiv=document.createElement("div")
+        rowDiv.classList.add("row")
+     
+      fecthedAlbum.forEach(album=>{
+      
+rowDiv.innerHTML+=` 
+                            <div class="col-12 col-md-4 ">
+                              <div class="card">
+                                <img src="${album.album.cover_big}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  <h5 class="card-title">${album.artist.name}</h5>
+                                  <h5 class="card-title">${album.album.title}</h5>
+                                </div>
+                              </div>
+                            </div>
+                            `
+  })
+  parentContainer.appendChild(h2)
+  parentContainer.appendChild(rowDiv)
+    }
+    const displayUniqueAlbums=()=>{
+      parentContainer.innerHTML=""
+      let h2=document.createElement("h2")
+        h2.innerText="Unique Albums"
+        let rowDiv=document.createElement("div")
+        rowDiv.classList.add("row")
+      fecthedAlbum.forEach(album=>{
+        console.log(album.album.id)
+       if( uniqueId.indexOf(album.album.id)===-1){
+         uniqueId.push(album.album.id)
+       }
+      })
+      console.log(uniqueId)
+      uniqueId.forEach(id=>{
+        fetch("https://deezerdevs-deezer.p.rapidapi.com/album/"+id, {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "b87c9d36dfmshbdaaa406e5e01c5p1cb598jsn7ba2f852ed1d",
+		"x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
+	}
+})
+.then(response => {
+	console.log(response);
+  return response.json()
+})
+.then(album=>{
+  console.log(album)
+ 
+     
+     
+      /* data.forEach(album=>{ */
+      
+rowDiv.innerHTML+=` 
+                            <div class="col-12 col-md-4 ">
+                              <div class="card">
+                                <img src="${album.cover_big}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                  
+                                  <h5 class="card-title">${album.title}</h5>
+                                </div>
+                              </div>
+                            </div>
+                            `
+ })
+  
+/* }) */
+.catch(err => {
+	console.error(err);
+});
+      })
+       parentContainer.appendChild(h2)
+  parentContainer.appendChild(rowDiv)
+    }
+
       window.onload=()=>{
         
         queries.forEach(query=>{
-            fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q="+query, {
+            fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q="+query, {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-key": "b87c9d36dfmshbdaaa406e5e01c5p1cb598jsn7ba2f852ed1d",
@@ -406,8 +488,13 @@ rowDiv.innerHTML+=`
 })
 .then(fetchedData => {
 	console.log(fetchedData.data);
-/*   fecthedAlbum=data.data */
+  fetchedData.data.forEach(data=> fecthedAlbum.push(data))
+  
+ 
+  console.log(fecthedAlbum)
   fetchAlbum(fetchedData.data,query)
+  /* fetchAlbumOnClick(fetchedData.data) */
+  
  
 
 })
